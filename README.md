@@ -1,1 +1,1 @@
-# beer-punk
+# Beer Punk
