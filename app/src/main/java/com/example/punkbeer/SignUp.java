@@ -13,10 +13,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.punkbeer.models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener, OnCompleteListener<AuthResult> {
     private EditText etEmail, etPassword, etConfirmPassword;
@@ -24,6 +27,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, O
     private TextView txtSignIn;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, O
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btn_register:
+                saveData();
                 register();
                 break;
             case R.id.txt_signIn:
@@ -61,6 +68,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, O
         progressDialog.show();
         progressDialog.setCanceledOnTouchOutside(false);
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this);
+    }
+    private void saveData(){
+        db = FirebaseDatabase.getInstance();
+        ref = db.getReference("users");
+
+        Users user = new Users(etEmail.getText().toString());
+        ref.child(user.getId()).setValue(user);
     }
     private void validate(String email,String password,String confirmedPassword){
         if(TextUtils.isEmpty(email)){

@@ -1,26 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Dashboard">
-    <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#0445D1"
-        android:text="This is my dashboard"
-        android:textSize="20dp"/>
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="60dp"
-        android:text="Logout"
-        android:textSize="20dp"
-        android:textAllCaps="false"/>
+    android:background="@drawable/dashboard_theme_triangle">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="30dp"
+        android:paddingTop="30dp"
+        android:orientation="vertical"
+        tools:context=".Dashboard">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/beer_mug_blackwhite_foreground"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/txt_logoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bungee"
+            android:text="Pick yo' beer"
+            android:layout_marginTop="3dp"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+            <EditText
+                android:id="@+id/et_beer"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:hint="Beer name"
+                android:paddingVertical="15dp"
+                android:textColor="#000000"
+                android:inputType="text"
+                android:paddingLeft="60dp"
+                android:background="@drawable/rectangular_field"/>
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/beer_input_foreground"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+            <EditText
+                android:id="@+id/et_food"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:hint="Food to go with"
+                android:paddingVertical="15dp"
+                android:textColor="#000000"
+                android:inputType="text"
+                android:paddingLeft="60dp"
+                android:background="@drawable/rectangular_field"/>
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_baseline_fastfood_24"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+            <EditText
+                android:id="@+id/et_ibu"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:hint="Bitterness level(less than)"
+                android:paddingVertical="15dp"
+                android:textColor="#000000"
+                android:inputType="number"
+                android:paddingLeft="60dp"
+                android:background="@drawable/rectangular_field"/>
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/bitter_foreground"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+            <EditText
+                android:id="@+id/et_abv"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:hint="Alcohol by volume(less than)"
+                android:paddingVertical="15dp"
+                android:textColor="#000000"
+                android:inputType="numberDecimal"
+                android:paddingLeft="60dp"
+                android:background="@drawable/rectangular_field"/>
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/abv_foreground"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <Button
+            android:id="@+id/btn_go"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:text="Go"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:background="#00afdb"
+            android:layout_marginTop="40dp">
+
+        </Button>
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
